@@ -8,12 +8,20 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="container body-content">
-        @RenderBody()
-        
-            <footer class="navbar-fixed-bottom panel-footer">
-                <p>&copy; @DateTime.Now.Year - MPocket application by Tomasz Kaczmarek</p>
-            </footer>      
+    @RenderBody()
+    @Html.Partial("_NavBar")
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-0">
+                @Html.Partial("LeftMenu")
+            </div>
+            <div class="col-md-8">
+                @Html.Partial("CentralView")
+            </div>
+        </div>
+        <footer class="navbar-fixed-bottom panel-footer">
+            <p>&copy; @DateTime.Now.Year - MPocket application by Tomasz Kaczmarek</p>
+        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

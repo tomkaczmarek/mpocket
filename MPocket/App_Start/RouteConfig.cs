@@ -16,7 +16,7 @@ namespace MPocket
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "UserLogin", action = "UserLoginView", id = UrlParameter.Optional }
+                defaults: new { controller = "MainPanel", action = "MainPanel", id = UrlParameter.Optional }
             );
         }
     }
