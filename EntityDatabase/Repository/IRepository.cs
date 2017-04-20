@@ -10,7 +10,7 @@ namespace EntityDatabase.Repository
     public interface IRepository<T>
     {
         void Add(T item, EntityContext context);
-        void Update(T item);
+        void Update(T item, EntityContext context);
         void Delete(T item);
         T Get(int id);
     }

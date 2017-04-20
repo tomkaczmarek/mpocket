@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MPocket.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,12 @@ namespace MPocket.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Save(ExpensesModel model)
+        {
+            model.Save();
+            return View("MainPanel");
         }
 
     }

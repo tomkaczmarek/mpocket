@@ -13,7 +13,7 @@ namespace EntityDatabase.Repository.Operation
         public void Add(Expenses item, EntityContext context)
         {
             context.Expenses.Add(item);
-            context.SaveChanges();
+            context.SaveChanges();                     
         }
 
         public void Delete(Expenses item)
@@ -26,7 +26,7 @@ namespace EntityDatabase.Repository.Operation
             throw new NotImplementedException();
         }
 
-        public void Update(Expenses item)
+        public void Update(Expenses item, EntityContext context)
         {
             throw new NotImplementedException();
         }

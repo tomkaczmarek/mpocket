@@ -197,10 +197,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\UserLogin\UserLoginView.cshtml" />
-    <Content Include="Views\MainPanel\MainPanel.cshtml" />
+    <Content Include="Views\Shared\MainPanel.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\MainPanel\LeftMenu.cshtml" />
-    <Content Include="Views\MainPanel\CentralView.cshtml" />
+    <Content Include="Views\Shared\LeftMenu.cshtml" />
+    <Content Include="Views\Shared\CentralView.cshtml" />
     <Content Include="Views\UserLogin\Login.cshtml" />
     <Content Include="Views\RegisterUser\RegisterUserView.cshtml" />
   </ItemGroup>
@@ -226,6 +226,10 @@
     <ProjectReference Include="..\EntityDatabase\EntityDatabase.csproj">
       <Project>{e4245b0d-4b27-4394-8bb7-7eff55355968}</Project>
       <Name>EntityDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MPocketCommon\MPocketCommon.csproj">
+      <Project>{cb71dbb8-a635-435d-81da-0ecb3a2879cb}</Project>
+      <Name>MPocketCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

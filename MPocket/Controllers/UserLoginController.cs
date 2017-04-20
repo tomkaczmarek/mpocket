@@ -1,8 +1,12 @@
-﻿using System;
+﻿using EntityDatabase.Models;
+using MPocket.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MPocketCommon.Helpers;
+using MPocketCommon.Cryptography;
 
 namespace MPocket.Controllers
 {
@@ -14,9 +18,38 @@ namespace MPocket.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        [HttpPost]
+        public ActionResult Login(UserModel model)
         {
-            return View("MainPanel");
+            User user = model.Get(model);           
+            if (user != null)
+            {
+                bool passwordCorrect = CheckPassword(user.Password, model.Password);
+                if (passwordCorrect)
+                {
+                    Session[Session.SessionID] = user.Name;
+                    if (!user.IsActive)
+                    {
+                        user.IsActive = true;
+                        model.UpdateUser(user);
+                    }
+                    return View("MainPanel");
+                }                             
+            }
+            else
+            {
+                ModelState.AddModelError("", "Error");
+            }
+
+            ModelState.Clear();
+            return View("UserLoginView");
         }
+
+        private bool CheckPassword(string password, string passwordToCheck)
+        {
+            ICryptography pass = new PasswordManager();
+            return pass.IsMatch(password, pass.Encrypt(passwordToCheck)); 
+        }
+
     }
 }

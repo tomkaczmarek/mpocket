@@ -9,11 +9,12 @@ using EntityDatabase.Context;
 
 namespace EntityDatabase.Repository.Operation
 {
-    public class UsersRepository : IRepository<User>
+    public class UsersOperation : IRepository<User>
     {
         public void Add(User item, EntityContext context)
         {
-            throw new NotImplementedException();
+            context.User.Add(item);
+            context.SaveChanges();
         }
 
         public void Delete(User item)
@@ -26,9 +27,17 @@ namespace EntityDatabase.Repository.Operation
             throw new NotImplementedException();
         }
 
-        public void Update(User item)
+        public User GetByLogin(string login, EntityContext context)
         {
-            
+            User user;
+            user = context.User.Where(l => l.Login == login).FirstOrDefault();
+            return user;
+        }
+
+        public void Update(User item, EntityContext context)
+        {
+            context.Entry(item).State = EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace MPocket
             );
 
             Mapper.Initialize(cfg => cfg.CreateMap<Expenses, ExpensesModel>());
-            Mapper.Initialize(cfg => cfg.CreateMap<User, UserModel>());
+            Mapper.Initialize(cfg => cfg.CreateMap<UserModel, User>());
         }
     }
 }
