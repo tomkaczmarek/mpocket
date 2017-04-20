@@ -16,7 +16,7 @@ namespace MPocket.Controllers
 
         public ActionResult Login()
         {
-            return View();
+            return View("MainPanel");
         }
     }
 }
