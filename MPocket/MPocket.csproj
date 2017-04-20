@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CentralPanelController.cs" />
     <Compile Include="Controllers\LeftMenuController.cs" />
     <Compile Include="Controllers\MainPanelController.cs" />
+    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\UserLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -201,6 +202,7 @@
     <Content Include="Views\MainPanel\LeftMenu.cshtml" />
     <Content Include="Views\MainPanel\CentralView.cshtml" />
     <Content Include="Views\UserLogin\Login.cshtml" />
+    <Content Include="Views\RegisterUser\RegisterUserView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

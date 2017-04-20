@@ -3,7 +3,7 @@
         <div class="col-md-offset-5 col-md-3" style="width:300px; height:400px; background:#f5f5f0">
             <div class="form-login">
                 <h4>Zaloguj się</h4>
-                <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="adres email" />
+                <input type="email" id="userName" class="form-control input-sm chat-input" placeholder="adres email" />
                 </br>
                 <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="hasło" />
                 </br>
@@ -16,7 +16,7 @@
             <br />
             <div class="form-login">
                 <div class="wrapper">
-                    <span>Nie masz konta <a>zarejstruj się.</a></span>
+                    <span>Nie masz konta? @Html.ActionLink("Zarejestruj się.", "RegisterUserView", "RegisterUser")</span>
                 </div>
             </div>
         </div>
