@@ -67,10 +67,16 @@
     <Compile Include="Migrations\201704180803155_User.Designer.cs">
       <DependentUpon>201704180803155_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704201018567_Expenses.cs" />
+    <Compile Include="Migrations\201704201018567_Expenses.Designer.cs">
+      <DependentUpon>201704201018567_Expenses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Expenses.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\Users\UsersOperation.cs" />
+    <Compile Include="Repository\Operation\ExpensesOperation.cs" />
+    <Compile Include="Repository\Operation\UsersOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +100,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704180803155_User.resx">
       <DependentUpon>201704180803155_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704201018567_Expenses.resx">
+      <DependentUpon>201704201018567_Expenses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
