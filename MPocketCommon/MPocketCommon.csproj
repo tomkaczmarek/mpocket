@@ -40,10 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comunication\ISend.cs" />
+    <Compile Include="Comunication\Mail.cs" />
+    <Compile Include="Comunication\SendMail.cs" />
     <Compile Include="Cryptography\ICommandPassword.cs" />
     <Compile Include="Cryptography\ICryptography.cs" />
     <Compile Include="Cryptography\PasswordGenerator.cs" />
     <Compile Include="Cryptography\PasswordManager.cs" />
+    <Compile Include="Helpers\Mailer.cs" />
     <Compile Include="Helpers\PageConstant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

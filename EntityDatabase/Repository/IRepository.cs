@@ -12,6 +12,6 @@ namespace EntityDatabase.Repository
         void Add(T item, EntityContext context);
         void Update(T item, EntityContext context);
         void Delete(T item);
-        T Get(int id);
+        T Get(int id, EntityContext context);
     }
 }

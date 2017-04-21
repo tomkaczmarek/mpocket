@@ -21,7 +21,7 @@ namespace EntityDatabase.Repository.Operation
             throw new NotImplementedException();
         }
 
-        public Expenses Get(int id)
+        public Expenses Get(int id, EntityContext context)
         {
             throw new NotImplementedException();
         }

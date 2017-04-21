@@ -15,10 +15,5 @@ namespace MPocket.Controllers
             return View();
         }
 
-        public ActionResult Save(ExpensesModel model)
-        {
-            model.Save();
-            return View();
-        }
     }
 }

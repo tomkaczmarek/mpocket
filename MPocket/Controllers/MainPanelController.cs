@@ -1,4 +1,5 @@
 ﻿using MPocket.Models;
+using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,8 @@ namespace MPocket.Controllers
         [HttpPost]
         public ActionResult Save(ExpensesModel model)
         {
-            model.Save();
+
+            model.Save((int)Session[Session.SessionID + PageConstant.USER_ID_I_SESSION]);
             return View("MainPanel");
         }
 

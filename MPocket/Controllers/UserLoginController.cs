@@ -27,7 +27,8 @@ namespace MPocket.Controllers
                 bool passwordCorrect = CheckPassword(user.Password, model.Password);
                 if (passwordCorrect)
                 {
-                    Session[Session.SessionID] = user.Name;
+                    AddUserToSession(user);
+                    ViewBag.Name = user.Name;
                     if (!user.IsActive)
                     {
                         user.IsActive = true;
@@ -49,6 +50,12 @@ namespace MPocket.Controllers
         {
             ICryptography pass = new PasswordManager();
             return pass.IsMatch(password, pass.Encrypt(passwordToCheck)); 
+        }
+
+        private void AddUserToSession(User user)
+        {
+            Session[Session.SessionID + PageConstant.USER_NAME_IN_SESSION] = user.Name;
+            Session[Session.SessionID + PageConstant.USER_ID_I_SESSION] = user.Id;
         }
 
     }

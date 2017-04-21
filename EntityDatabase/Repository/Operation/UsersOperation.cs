@@ -22,9 +22,9 @@ namespace EntityDatabase.Repository.Operation
             
         }
 
-        public User Get(int id)
+        public User Get(int id, EntityContext context)
         {
-            throw new NotImplementedException();
+            return context.User.Where(i => i.Id == id).FirstOrDefault();
         }
 
         public User GetByLogin(string login, EntityContext context)

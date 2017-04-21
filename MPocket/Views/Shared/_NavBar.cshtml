@@ -7,7 +7,7 @@
                 LOGO
             </p>
             <p class="navbar-text navbar-right">
-                <a>@Session[Session.SessionID]</a>
+                <a>@Session[Session.SessionID + PageConstant.USER_NAME_IN_SESSION]</a>
                 <a>Avatar</a>
                 @Html.ActionLink("Wyloguj", "UserLoginView", "UserLogin")
             </p>

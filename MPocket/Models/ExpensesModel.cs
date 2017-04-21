@@ -13,14 +13,17 @@ namespace MPocket.Models
         public string Description { get; set; }
 
 
-        public void Save()
+        public void Save(int userId)
         {
             using (var c = new EntityDatabase.Context.EntityContext())
             {
                 ExpensesOperation operation = new ExpensesOperation();
                 Expenses dto = new Expenses();
+                UserModel model = new UserModel();
+                User user = model.GetById(userId);
                 dto.Amount = Amount;
                 dto.Description = Description;
+                dto.UserId = userId;
                 operation.Add(dto, c);
             }                      
         }
