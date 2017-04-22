@@ -1,0 +1,26 @@
+﻿@model MPocket.ViewsModel.SummaryModel
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+
+
+@{ 
+    decimal i = 0;
+    decimal j = 0;
+
+    <ul>
+        @foreach (var exp in Model.Summary)
+        {
+            <li class="list-group-item">@exp.Amount<span class="badge">@exp.Description</span></li>
+            i += exp.Amount;          
+        }
+    </ul>
+    <br />
+    <p>Suma wydatków: <strong style="font-size:medium; font-family:'Century Gothic'">@string.Format("{0:#.00}", i) zł</strong></p>
+}
+
+
+        
+
+

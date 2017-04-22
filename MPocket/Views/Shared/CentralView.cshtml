@@ -1,10 +1,11 @@
 ﻿@model MPocket.Models.ExpensesModel
 
-@using (Html.BeginForm("Save", "MainPanel"))
+<br />
+@using (Html.BeginForm("Save", "CentralPanel"))
 {
     <div class="form-group">
         @Html.TextBoxFor(m => m.Amount, new {@placeholder = "kwota", @class="form-control", @autocomplete="off" })
-        @Html.TextBoxFor(m=> m.Description, new { @placeholder = "kwota", @class = "form-control" })
+        @Html.TextBoxFor(m=> m.Description, new { @placeholder = "opis", @class = "form-control" })
         <button type="submit" class="btn btn-default">Zapisz</button>
      </div>
 }

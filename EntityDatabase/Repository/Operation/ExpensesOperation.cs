@@ -30,5 +30,10 @@ namespace EntityDatabase.Repository.Operation
         {
             throw new NotImplementedException();
         }
+
+        public List<Expenses> GetAll(int userid, EntityContext context)
+        {
+            return context.Expenses.Where(i => i.UserId == userid).ToList();
+        }
     }
 }

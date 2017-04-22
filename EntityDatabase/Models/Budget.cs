@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace EntityDatabase.Models
 {
-    public class Expenses
+    public class Budget
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int BudgetId { get; set; }
-        public decimal Amount { get; set; }
-        public string Description { get; set; }
-        
+        public decimal StartBudget { get; set; }
+        public decimal CurrentBudget { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

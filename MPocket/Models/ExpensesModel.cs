@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using EntityDatabase.Repository.Operation;
 using EntityDatabase.Models;
+using MPocket.ViewsModel;
+using EntityDatabase.Context;
 
 namespace MPocket.Models
 {
@@ -15,7 +17,7 @@ namespace MPocket.Models
 
         public void Save(int userId)
         {
-            using (var c = new EntityDatabase.Context.EntityContext())
+            using (var c = new EntityContext())
             {
                 ExpensesOperation operation = new ExpensesOperation();
                 Expenses dto = new Expenses();
@@ -26,6 +28,19 @@ namespace MPocket.Models
                 dto.UserId = userId;
                 operation.Add(dto, c);
             }                      
+        }
+
+        public List<Expenses> GetAll(int userid)
+        {
+            List<Expenses> expe = new List<Expenses>();
+            using (var c = new EntityContext())
+            {
+                ExpensesOperation operation = new ExpensesOperation();
+                expe = operation.GetAll(userid, c);
+            }
+
+            return expe;
+               
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace MPocket.Controllers
 {
-    public class LeftMenuController : Controller
+    public class SettingsController : Controller
     {
-        // GET: LeftMenu
+        // GET: Settings
         public ActionResult Index()
         {
             return View();

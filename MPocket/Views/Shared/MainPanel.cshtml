@@ -6,6 +6,9 @@
     <title>MPocket</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
 </head>
 <body>
     @*@RenderBody()*@
@@ -13,16 +16,114 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-0">
-                @Html.Partial("LeftMenu")
+                <div>
+                    <br />
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a id="expense">Wprowadź wydatki</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a id="summary">Analiza wydatków</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a id="budget">Budżet</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a id="settings">Ustawienia</a>
+                        </li>                        
+                    </ul>
+                </div>                
             </div>
-            <div class="col-md-8">
-                @Html.Partial("CentralView")
+            <div class="col-md-8" id="output">
+                
             </div>
         </div>
+
     <footer class="navbar-fixed-bottom panel-footer">
         <p>&copy; @DateTime.Now.Year - MPocket application by Tomasz Kaczmarek</p>
     </footer>
     </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#expense").click(function () {
+                $.ajax({
+                    url: '@Url.Action("CentralView", "CentralPanel")',
+                    dataType: "html",
+                    type: "GET",
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        //alert("success");
+                        $("#output").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#summary").click(function () {
+                $.ajax({
+                    url: '@Url.Action("Index", "Summary")',
+                    dataType: "html",
+                    type: "GET",
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        //alert("success");
+                        $("#output").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#settings").click(function () {
+                $.ajax({
+                    url: '@Url.Action("Index", "Settings")',
+                    dataType: "html",
+                    type: "GET",
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        //alert("success");
+                        $("#output").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#budget").click(function () {
+                $.ajax({
+                    url: '@Url.Action("Index", "Budget")',
+                    dataType: "html",
+                    type: "GET",
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        //alert("success");
+                        $("#output").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>
 
