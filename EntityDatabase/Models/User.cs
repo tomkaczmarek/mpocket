@@ -14,6 +14,7 @@ namespace EntityDatabase.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
+        public bool IsConfigure { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

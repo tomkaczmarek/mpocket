@@ -39,5 +39,13 @@ namespace EntityDatabase.Repository.Operation
             context.Entry(item).State = EntityState.Modified;
             context.SaveChanges();
         }
+
+        public int AddAndGetId(User item, EntityContext context)
+        {
+            context.User.Add(item);
+            context.SaveChanges();
+            context.Entry(item).GetDatabaseValues();
+            return item.Id;
+        }
     }
 }

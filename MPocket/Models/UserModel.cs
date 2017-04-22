@@ -36,22 +36,26 @@ namespace MPocket.Models
             return usermodel;
         }
 
-        public void Register(UserModel model)
+        public int Register(UserModel model)
         {
-            if(model.Password == model.ConfirmPassword)
+            int userid = 0;
+            if (model.Password == model.ConfirmPassword)
             {
                 ICommandPassword password = new PasswordGenerator();
                 User user = AutoMapper.Mapper.Map<UserModel, User>(model);
                 user.CreationDate = DateTime.Now;
-
+               
                 using (var c = new EntityContext())
                 {
                     UsersOperation operation = new UsersOperation();
                     ICryptography crypto = new PasswordManager();
+
                     user.Password = crypto.Encrypt(model.Password);
-                    operation.Add(user, c);
+                    userid = operation.AddAndGetId(user, c);                   
                 }
-            }        
+               
+            }
+            return userid;
         }
 
         public void UpdateUser(User model)

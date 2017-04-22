@@ -22,7 +22,9 @@ namespace MPocket.Controllers
             User user = model.Get(model);
             if(user == null)
             {
-                model.Register(model);
+                int userId = model.Register(model);
+                BudgetModel bmodel = new BudgetModel();
+                bmodel.AddBudget(userId);
             }
             ModelState.Clear();
             return View("RegisterUserView");

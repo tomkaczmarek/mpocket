@@ -6,6 +6,7 @@ using EntityDatabase.Repository.Operation;
 using EntityDatabase.Models;
 using MPocket.ViewsModel;
 using EntityDatabase.Context;
+using EntityDatabase.Repository;
 
 namespace MPocket.Models
 {

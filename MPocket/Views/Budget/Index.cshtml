@@ -1,7 +1,19 @@
-﻿
+﻿@model MPocket.Models.BudgetModel
 @{
     ViewBag.Title = "Index";
 }
+<br />
+@using (@Html.BeginForm("Index", "Budget"))
+{
+    <div class="form-group form-inline">
+        @Html.TextBoxFor(m => m.StartBudget, new { @class = "form-control", @style = "width:138px" })
+        @Html.TextBoxFor(m => m.CurrentBudget, new { @class = "form-control", @disabled = "disabled", @style = "width:138px" })
+    </div>
+    <div class="form-group form-inline">
+        @Html.TextBoxFor(m => m.StartDate, new { @class = "form-control", @disabled = "disabled" })
+        @Html.TextBoxFor(m => m.EndDate, new { @class = "form-control", @disabled = "disabled" })
+    </div>
+    <input type="submit" class="btn btn-default" value="Aktualizuj"/>
+}
 
-<h2>Index</h2>
 

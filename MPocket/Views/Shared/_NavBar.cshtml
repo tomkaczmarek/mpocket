@@ -6,9 +6,12 @@
             <p class="navbar-text navbar-left">
                 LOGO
             </p>
+    
             <p class="navbar-text navbar-right">
+                @Html.Partial("BudgetSummary")
+                
                 <a>@Session[Session.SessionID + PageConstant.USER_NAME_IN_SESSION]</a>
-                <a>Avatar</a>
+                @*<a>Avatar</a>*@
                 @Html.ActionLink("Wyloguj", "UserLoginView", "UserLogin")
             </p>
         </div>

@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
+    <Compile Include="Controllers\BudgetSummaryNavBarController.cs" />
     <Compile Include="Controllers\CentralPanelController.cs" />
     <Compile Include="Controllers\MainPanelController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BudgetModel.cs" />
     <Compile Include="Models\ExpensesModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -208,6 +210,7 @@
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Summary\Index.cshtml" />
     <Content Include="Views\Budget\Index.cshtml" />
+    <Content Include="Views\Shared\BudgetSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
