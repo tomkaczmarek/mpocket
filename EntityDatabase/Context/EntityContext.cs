@@ -13,5 +13,6 @@ namespace EntityDatabase.Context
         public DbSet<User> User { get; set; }
         public DbSet<Expenses> Expenses { get; set; }
         public DbSet<Budget> Budget { get; set; }
+        public DbSet<Settings> Settings { get; set; }
     }
 }

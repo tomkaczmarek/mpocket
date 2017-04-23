@@ -16,5 +16,7 @@ namespace EntityDatabase.Models
         public bool IsActive { get; set; }
         public bool IsConfigure { get; set; }
         public DateTime CreationDate { get; set; }
+
+        public virtual Settings Settings { get; set; }
     }
 }
