@@ -1,7 +1,16 @@
-﻿
+﻿@model MPocket.Models.SettingsModel
 @{
     ViewBag.Title = "IndexView";
 }
+<br />
+@using (Html.BeginForm("Index", "Settings"))
+{
+    <div class="checkbox">
+        <label><input type="checkbox" value="" />Automatycznie przedłużaj budżet</label>
+    </div>
+    <button type="submit" class="btn btn-default">Zapisz</button>
+}
 
-<h2>Settings</h2>
+
+
 

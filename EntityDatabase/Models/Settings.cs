@@ -10,5 +10,6 @@ namespace EntityDatabase.Models
     {
         public int Id { get; set; }
         public bool IsManual { get; set; }
+        public int UserId { get; set; }
     }
 }

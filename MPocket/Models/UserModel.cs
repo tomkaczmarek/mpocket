@@ -15,11 +15,11 @@ namespace MPocket.Models
     public class UserModel
     {
         public int Id { get; set; }
-        [Required(ErrorMessage ="Login is required")]
-        public string Login { get; set; }
+        public string Login { get; set; } 
         public string Name { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
+        public bool IsConfigure { get; set; }
         public DateTime CreationDate { get; set; }
         public string ConfirmPassword { get; set; }
 
@@ -42,7 +42,11 @@ namespace MPocket.Models
             if (model.Password == model.ConfirmPassword)
             {
                 ICommandPassword password = new PasswordGenerator();
-                User user = AutoMapper.Mapper.Map<UserModel, User>(model);
+                //User user = AutoMapper.Mapper.Map<UserModel, User>(model);
+                User user = new User();
+                user.Login = model.Login;
+                user.Name = model.Name;
+                user.Password = model.Password;
                 user.CreationDate = DateTime.Now;
                
                 using (var c = new EntityContext())

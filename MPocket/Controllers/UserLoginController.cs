@@ -32,7 +32,13 @@ namespace MPocket.Controllers
                     if (!user.IsActive)
                     {
                         user.IsActive = true;
-                        model.UpdateUser(user);
+                        model.UpdateUser(user);                       
+                    }
+                    BudgetModel bmodel = new BudgetModel();
+                    Budget budget = bmodel.GetBudget(user.Id);
+                    if (budget == null)
+                    {
+                        return RedirectToAction("FirstLaunch", "FirstLaunch");
                     }
                     return View("MainPanel");
                 }                             

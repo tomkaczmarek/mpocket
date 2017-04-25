@@ -31,7 +31,7 @@ namespace EntityDatabase.Repository.Operation
             throw new NotImplementedException();
         }
 
-        public Budget BetByUserId(int userId, EntityContext context)
+        public Budget GetByUserId(int userId, EntityContext context)
         {
             return context.Budget.Where(p => p.UserId == userId).FirstOrDefault();
         }

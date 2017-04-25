@@ -8,7 +8,6 @@ namespace EntityDatabase.Models
 {
     public class User
     {
-
         public int Id { get; set; }
         public string Login { get; set; } 
         public string Name { get; set; }
@@ -17,6 +16,5 @@ namespace EntityDatabase.Models
         public bool IsConfigure { get; set; }
         public DateTime CreationDate { get; set; }
 
-        public virtual Settings Settings { get; set; }
     }
 }

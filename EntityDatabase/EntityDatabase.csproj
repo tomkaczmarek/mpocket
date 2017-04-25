@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201704231716252_SettingsTable.Designer.cs">
       <DependentUpon>201704231716252_SettingsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704251745383_ChangeInSettings.cs" />
+    <Compile Include="Migrations\201704251745383_ChangeInSettings.Designer.cs">
+      <DependentUpon>201704251745383_ChangeInSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Budget.cs" />
     <Compile Include="Models\Expenses.cs" />
@@ -99,6 +103,7 @@
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\Operation\BudgetOperation.cs" />
     <Compile Include="Repository\Operation\ExpensesOperation.cs" />
+    <Compile Include="Repository\Operation\SettingsOperation.cs" />
     <Compile Include="Repository\Operation\UsersOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -141,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704231716252_SettingsTable.resx">
       <DependentUpon>201704231716252_SettingsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704251745383_ChangeInSettings.resx">
+      <DependentUpon>201704251745383_ChangeInSettings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

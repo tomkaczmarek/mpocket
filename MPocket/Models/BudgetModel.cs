@@ -10,22 +10,39 @@ namespace MPocket.Models
 {
     public class BudgetModel
     {
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public decimal StartBudget { get; set; }
         public decimal CurrentBudget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public void AddBudget(int userId)
+        public void AddBudget(BudgetModel model)
         {
+            //Budget budget = AutoMapper.Mapper.Map<BudgetModel, Budget>(model);
+            Budget budget = new Budget();
+            budget.StartBudget = model.StartBudget;
+            budget.StartDate = model.StartDate;
+            budget.EndDate = model.EndDate;
+            budget.CurrentBudget = model.CurrentBudget;
+            budget.UserId = model.UserId;
+
             using (var c = new EntityContext())
             {
                 BudgetOperation operation = new BudgetOperation();
-                Budget budget = new Budget();
-                budget.UserId = userId;
-                budget.StartDate = DateTime.Now;
-                budget.EndDate = DateTime.Now;
                 operation.Add(budget, c);
             }
+        }
+
+        public Budget GetBudget(int userId)
+        {
+            Budget budget;
+            using (var c = new EntityContext())
+            {
+                BudgetOperation operation = new BudgetOperation();
+                budget = operation.GetByUserId(userId, c);
+            }
+            return budget;
         }
     }
 }

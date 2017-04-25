@@ -22,8 +22,11 @@ namespace MPocket
                 defaults: new { controller = "UserLogin", action = "UserLoginView", id = UrlParameter.Optional }
             );
 
-            Mapper.Initialize(cfg => cfg.CreateMap<Expenses, ExpensesModel>());
+            Mapper.Initialize(cfg => cfg.CreateMap<ExpensesModel, Expenses>());
             Mapper.Initialize(cfg => cfg.CreateMap<UserModel, User>());
+            Mapper.Initialize(cfg => cfg.CreateMap<BudgetModel, Budget>());
+            Mapper.Initialize(cfg => cfg.CreateMap<SettingsModel, Settings>());
         }
+
     }
 }
