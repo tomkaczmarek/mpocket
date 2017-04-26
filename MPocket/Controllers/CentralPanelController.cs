@@ -18,7 +18,10 @@ namespace MPocket.Controllers
 
         public ActionResult Save(ExpensesModel model)
         {
-            model.Save((int)Session[Session.SessionID + PageConstant.USER_ID_I_SESSION]);
+            BudgetModel bmodel = new BudgetModel();
+            int userId = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
+            model.BudgetId = bmodel.GetCurrentBudgetId(userId);
+            model.Save(model);
             return View("MainPanel");
         }
 

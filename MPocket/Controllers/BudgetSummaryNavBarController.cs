@@ -1,4 +1,5 @@
 ﻿using MPocket.Models;
+using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,10 @@ namespace MPocket.Controllers
     public class BudgetSummaryNavBarController : Controller
     {
         // GET: BudgetSummaryNavBar
-        public ActionResult Index(BudgetModel model)
+        public ActionResult BudgetSummary()
         {
+            BudgetModel model = new BudgetModel();
+            model.CurrentBudget = model.GetCurrentBudget(CurrentContext.Instance.Get(Session.SessionID).CurrentUserId).CurrentBudget;
             return View(model);
         }
     }

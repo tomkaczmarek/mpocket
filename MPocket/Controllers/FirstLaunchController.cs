@@ -24,7 +24,7 @@ namespace MPocket.Controllers
             budgetModel = model.Budget;
             settingModel = model.Settings;
 
-            int userid = (int)Session[Session.SessionID + PageConstant.USER_ID_I_SESSION];
+            int userid = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
             budgetModel.UserId = settingModel.UserId = userid;
             budgetModel.AddBudget(budgetModel);
             settingModel.AddSettings(settingModel);

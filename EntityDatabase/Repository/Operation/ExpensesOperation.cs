@@ -31,9 +31,9 @@ namespace EntityDatabase.Repository.Operation
             throw new NotImplementedException();
         }
 
-        public List<Expenses> GetAll(int userid, EntityContext context)
+        public List<Expenses> GetAll(int budgetId, EntityContext context)
         {
-            return context.Expenses.Where(i => i.UserId == userid).ToList();
+            return context.Expenses.Where(i => i.BudgetId == budgetId).ToList();
         }
     }
 }

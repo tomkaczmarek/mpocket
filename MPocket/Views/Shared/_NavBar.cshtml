@@ -1,4 +1,5 @@
 ﻿@using MPocketCommon.Helpers
+@model MPocket.Models.BudgetModel
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -8,9 +9,9 @@
             </p>
     
             <p class="navbar-text navbar-right">
-                @Html.Partial("BudgetSummary")
+                @Html.Partial("BudgetSummary", Model)
                 
-                <a>@Session[Session.SessionID + PageConstant.USER_NAME_IN_SESSION]</a>
+                <a>@CurrentContext.Instance.Get(Session.SessionID).CurrentUserName</a>
                 @*<a>Avatar</a>*@
                 @Html.ActionLink("Wyloguj", "UserLoginView", "UserLogin")
             </p>

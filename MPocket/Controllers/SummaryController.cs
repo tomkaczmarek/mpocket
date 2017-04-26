@@ -15,7 +15,9 @@ namespace MPocket.Controllers
         public ActionResult Index()
         {
             ExpensesModel model = new ExpensesModel();
-            var expense = model.GetAll((int)Session[Session.SessionID + PageConstant.USER_ID_I_SESSION]);
+            BudgetModel bModel = new BudgetModel();
+            int userId = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
+            var expense = model.GetAll(bModel.GetCurrentBudgetId(userId));
 
             var viewModel = new SummaryModel()
             {

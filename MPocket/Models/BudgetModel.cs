@@ -34,15 +34,28 @@ namespace MPocket.Models
             }
         }
 
-        public Budget GetBudget(int userId)
+        public Budget GetCurrentBudget(int userId)
         {
             Budget budget;
             using (var c = new EntityContext())
             {
                 BudgetOperation operation = new BudgetOperation();
-                budget = operation.GetByUserId(userId, c);
+                budget = operation.GetByUserId(userId, DateTime.Now, c);
             }
             return budget;
+        }
+
+        public int GetCurrentBudgetId(int userId)
+        {
+            int budgetid = 0;
+
+            using (var c = new EntityContext())
+            {
+                BudgetOperation operation = new BudgetOperation();
+                budgetid = operation.GetCurrentBudgetId(userId, DateTime.Now, c);
+            }
+
+            return budgetid;
         }
     }
 }

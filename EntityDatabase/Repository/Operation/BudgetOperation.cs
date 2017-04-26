@@ -31,9 +31,14 @@ namespace EntityDatabase.Repository.Operation
             throw new NotImplementedException();
         }
 
-        public Budget GetByUserId(int userId, EntityContext context)
+        public Budget GetByUserId(int userId, DateTime now, EntityContext context)
         {
-            return context.Budget.Where(p => p.UserId == userId).FirstOrDefault();
+            return context.Budget.Where(p => p.UserId == userId && p.StartDate <= now && p.EndDate >= now).FirstOrDefault();
+        }
+
+        public int GetCurrentBudgetId(int userId, DateTime now, EntityContext context)
+        {
+            return context.Budget.Where(p => p.UserId == userId && p.StartDate <= now && p.EndDate >= now).Select(i => i.Id).FirstOrDefault();
         }
     }
 }

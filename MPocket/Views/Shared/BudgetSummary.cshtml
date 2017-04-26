@@ -1,6 +1,7 @@
 ﻿@model MPocket.Models.BudgetModel
 
 
-    <label>@string.Format("Twój budżet wynosi: {0:#.00} zł", 100.12)</label>
+    @*<label>@string.Format("Twój budżet wynosi: {0:#.00} zł", 100.12)</label>*@
+<label>@string.Format("Twój budżet wynosi: {0:#.00} zł", Model == null ? 0 :Model.CurrentBudget)</label>
 
 

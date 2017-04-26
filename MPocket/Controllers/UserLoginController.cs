@@ -27,20 +27,24 @@ namespace MPocket.Controllers
                 bool passwordCorrect = CheckPassword(user.Password, model.Password);
                 if (passwordCorrect)
                 {
-                    AddUserToSession(user);
-                    ViewBag.Name = user.Name;
                     if (!user.IsActive)
                     {
                         user.IsActive = true;
                         model.UpdateUser(user);                       
                     }
+
+                    AddToSession(user);
+                    ViewBag.Name = user.Name;
+
                     BudgetModel bmodel = new BudgetModel();
-                    Budget budget = bmodel.GetBudget(user.Id);
+                    Budget budget = bmodel.GetCurrentBudget(user.Id);
+
                     if (budget == null)
                     {
                         return RedirectToAction("FirstLaunch", "FirstLaunch");
                     }
-                    return View("MainPanel");
+                    bmodel.CurrentBudget = budget.CurrentBudget;
+                    return View("MainPanel", bmodel);
                 }                             
             }
             else
@@ -58,10 +62,12 @@ namespace MPocket.Controllers
             return pass.IsMatch(password, pass.Encrypt(passwordToCheck)); 
         }
 
-        private void AddUserToSession(User user)
+        private void AddToSession(User user)
         {
-            Session[Session.SessionID + PageConstant.USER_NAME_IN_SESSION] = user.Name;
-            Session[Session.SessionID + PageConstant.USER_ID_I_SESSION] = user.Id;
+            SessionBags sessionBags = new SessionBags();
+            sessionBags.CurrentUserId = user.Id;
+            sessionBags.CurrentUserName = user.Name;
+            CurrentContext.Instance.Add(Session.SessionID, sessionBags);
         }
 
     }
