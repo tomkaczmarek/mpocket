@@ -1,4 +1,5 @@
-﻿using MPocket.Models;
+﻿using EntityDatabase.Models;
+using MPocket.Models;
 using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,13 @@ namespace MPocket.Controllers
             int userId = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
             model.BudgetId = bmodel.GetCurrentBudgetId(userId);
             model.Save(model);
-            return View("MainPanel");
+
+            Budget budget = bmodel.GetCurrentBudget(userId);
+            budget.CurrentBudget = budget.CurrentBudget - model.Amount;
+            bmodel.UpdateBudget(budget);
+
+            bmodel.CurrentBudget = budget.CurrentBudget;
+            return View("MainPanel", bmodel);
         }
 
     }

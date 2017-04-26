@@ -14,6 +14,7 @@ namespace MPocket.Models
         public int UserId { get; set; }
         public decimal StartBudget { get; set; }
         public decimal CurrentBudget { get; set; }
+        public decimal AddedBudget { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
@@ -24,7 +25,7 @@ namespace MPocket.Models
             budget.StartBudget = model.StartBudget;
             budget.StartDate = model.StartDate;
             budget.EndDate = model.EndDate;
-            budget.CurrentBudget = model.CurrentBudget;
+            budget.CurrentBudget = model.StartBudget;
             budget.UserId = model.UserId;
 
             using (var c = new EntityContext())
@@ -56,6 +57,15 @@ namespace MPocket.Models
             }
 
             return budgetid;
+        }
+
+        public void UpdateBudget(Budget budget)
+        {
+            using (var c = new EntityContext())
+            {
+                BudgetOperation operation = new BudgetOperation();
+                operation.Update(budget, c);
+            }
         }
     }
 }

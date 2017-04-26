@@ -3,17 +3,21 @@
     ViewBag.Title = "Index";
 }
 <br />
-@using (@Html.BeginForm("Index", "Budget"))
+@using (@Html.BeginForm("Update", "Budget"))
 {
     <div class="form-group">
         <div class="form-group">
             <label>Budżet</label>
-            @Html.TextBoxFor(m => m.StartBudget, new { @class = "form-control", @style = "width:150px" })
+            @Html.TextBoxFor(m => m.StartBudget, new { @class = "form-control", @style = "width:150px", @disabled = "disabled" })
         </div>
         <div class="form-group">
             <label>Aktualny budżet</label>
             @Html.TextBoxFor(m => m.CurrentBudget, new { @class = "form-control", @disabled = "disabled", @style = "width:150px" })
-        </div>   
+        </div>
+        <div class="form-group">
+            <label>Dodaj budżet</label>
+            @Html.TextBoxFor(m => m.AddedBudget, new { @class = "form-control", @style = "width:150px" })
+        </div> 
     </div>
     <div class="form-group form-inline">
         <div class="form-group">

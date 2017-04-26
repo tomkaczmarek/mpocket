@@ -28,7 +28,8 @@ namespace EntityDatabase.Repository.Operation
 
         public void Update(Budget item, EntityContext context)
         {
-            throw new NotImplementedException();
+            context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            context.SaveChanges();
         }
 
         public Budget GetByUserId(int userId, DateTime now, EntityContext context)

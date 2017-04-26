@@ -1,4 +1,5 @@
-﻿using MPocket.Models;
+﻿using EntityDatabase.Models;
+using MPocket.Models;
 using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
@@ -20,15 +21,18 @@ namespace MPocket.Controllers
         {
             BudgetModel budgetModel = new BudgetModel();
             SettingsModel settingModel = new SettingsModel();
+            int userid = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
 
             budgetModel = model.Budget;
-            settingModel = model.Settings;
-
-            int userid = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
+            settingModel = model.Settings;                   
             budgetModel.UserId = settingModel.UserId = userid;
             budgetModel.AddBudget(budgetModel);
             settingModel.AddSettings(settingModel);
-            return View("MainPanel");
+
+            Budget budget = budgetModel.GetCurrentBudget(userid);
+            budgetModel.CurrentBudget = budget.CurrentBudget;
+
+            return View("MainPanel", budgetModel);
         }
     }
 }
