@@ -154,6 +154,7 @@
     <Compile Include="Controllers\BudgetSummaryNavBarController.cs" />
     <Compile Include="Controllers\CentralPanelController.cs" />
     <Compile Include="Controllers\FirstLaunchController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\MainPanelController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewsModel\BudgetViewModel.cs" />
     <Compile Include="ViewsModel\SummaryModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +217,7 @@
     <Content Include="Views\Budget\Index.cshtml" />
     <Content Include="Views\Shared\BudgetSummary.cshtml" />
     <Content Include="Views\FirstLaunch\FirstLaunch.cshtml" />
+    <Content Include="Views\History\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

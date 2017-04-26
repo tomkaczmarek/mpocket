@@ -33,6 +33,9 @@
                         <li class="list-group-item">
                             <a id="settings">Ustawienia</a>
                         </li>  
+                        <li class="list-group-item">
+                            <a id="history">Historia</a>
+                        </li> 
                     </ul>
                 </div>                
             </div>
@@ -112,6 +115,26 @@
             $("#budget").click(function () {
                 $.ajax({
                     url: '@Url.Action("Index", "Budget")',
+                    dataType: "html",
+                    type: "GET",
+                    contentType: "application/html; charset=utf-8",
+                    success: function (result) {
+                        //alert("success");
+                        $("#output").html(result);
+                    },
+                    error: function (xhr) {
+                        alert("error");
+                    }
+                });
+            });
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#history").click(function () {
+                $.ajax({
+                    url: '@Url.Action("Index", "History")',
                     dataType: "html",
                     type: "GET",
                     contentType: "application/html; charset=utf-8",

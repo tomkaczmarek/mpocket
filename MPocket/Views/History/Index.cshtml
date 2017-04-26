@@ -1,0 +1,19 @@
+﻿@model MPocket.ViewsModel.BudgetViewModel
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+@{ 
+
+<ul>
+    @foreach (var b in Model.Budgets)
+    {
+        <li class="list-group-item">@b.StartBudget</li>
+    }
+
+</ul>
+    
+
+
+ }
+

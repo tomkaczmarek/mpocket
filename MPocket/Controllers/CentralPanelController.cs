@@ -29,6 +29,7 @@ namespace MPocket.Controllers
             bmodel.UpdateBudget(budget);
 
             bmodel.CurrentBudget = budget.CurrentBudget;
+            bmodel.StartBudget = budget.StartBudget;
             return View("MainPanel", bmodel);
         }
 

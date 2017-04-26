@@ -67,5 +67,16 @@ namespace MPocket.Models
                 operation.Update(budget, c);
             }
         }
+
+        public List<Budget> GetAll(int userId)
+        {
+            List<Budget> budget = new List<Budget>();
+            using (var c = new EntityContext())
+            {
+                BudgetOperation operation = new BudgetOperation();
+                budget = operation.GetAll(userId, c);
+            }
+            return budget;
+        }
     }
 }

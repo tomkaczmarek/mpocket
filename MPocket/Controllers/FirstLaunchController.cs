@@ -31,6 +31,7 @@ namespace MPocket.Controllers
 
             Budget budget = budgetModel.GetCurrentBudget(userid);
             budgetModel.CurrentBudget = budget.CurrentBudget;
+            budgetModel.StartBudget = budget.StartBudget;
 
             return View("MainPanel", budgetModel);
         }

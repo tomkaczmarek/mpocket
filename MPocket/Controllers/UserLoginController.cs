@@ -44,6 +44,7 @@ namespace MPocket.Controllers
                         return RedirectToAction("FirstLaunch", "FirstLaunch");
                     }
                     bmodel.CurrentBudget = budget.CurrentBudget;
+                    bmodel.StartBudget = budget.StartBudget;
                     return View("MainPanel", bmodel);
                 }                             
             }

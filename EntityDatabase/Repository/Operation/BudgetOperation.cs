@@ -41,5 +41,10 @@ namespace EntityDatabase.Repository.Operation
         {
             return context.Budget.Where(p => p.UserId == userId && p.StartDate <= now && p.EndDate >= now).Select(i => i.Id).FirstOrDefault();
         }
+
+        public List<Budget> GetAll(int userId, EntityContext c)
+        {
+            return c.Budget.Where(p => p.UserId == userId).ToList();
+        }
     }
 }
