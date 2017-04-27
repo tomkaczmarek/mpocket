@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using MPocketCommon.Helpers;
 using MPocketCommon.Cryptography;
+using MPocket.Utils;
 
 namespace MPocket.Controllers
 {
@@ -24,7 +25,9 @@ namespace MPocket.Controllers
             User user = model.Get(model);           
             if (user != null)
             {
+                SessionManager sessionManager = new SessionManager();
                 bool passwordCorrect = CheckPassword(user.Password, model.Password);
+
                 if (passwordCorrect)
                 {
                     if (!user.IsActive)
@@ -33,7 +36,7 @@ namespace MPocket.Controllers
                         model.UpdateUser(user);                       
                     }
 
-                    AddToSession(user);
+                    sessionManager.Add<User>(user, PageConstant.USER_ID_I_SESSION);
                     ViewBag.Name = user.Name;
 
                     BudgetModel bmodel = new BudgetModel();
@@ -43,6 +46,9 @@ namespace MPocket.Controllers
                     {
                         return RedirectToAction("FirstLaunch", "FirstLaunch");
                     }
+                  
+                    sessionManager.Add<Budget>(budget, PageConstant.BUDGET_ID_IN_SESSION);
+
                     bmodel.CurrentBudget = budget.CurrentBudget;
                     bmodel.StartBudget = budget.StartBudget;
                     return View("MainPanel", bmodel);
@@ -61,14 +67,6 @@ namespace MPocket.Controllers
         {
             ICryptography pass = new PasswordManager();
             return pass.IsMatch(password, pass.Encrypt(passwordToCheck)); 
-        }
-
-        private void AddToSession(User user)
-        {
-            SessionBags sessionBags = new SessionBags();
-            sessionBags.CurrentUserId = user.Id;
-            sessionBags.CurrentUserName = user.Name;
-            CurrentContext.Instance.Add(Session.SessionID, sessionBags);
         }
 
     }

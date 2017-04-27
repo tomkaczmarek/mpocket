@@ -1,4 +1,6 @@
-﻿using MPocket.Models;
+﻿using EntityDatabase.Models;
+using MPocket.Models;
+using MPocket.Utils;
 using MPocket.ViewsModel;
 using MPocketCommon.Helpers;
 using System;
@@ -16,8 +18,10 @@ namespace MPocket.Controllers
         {
             ExpensesModel model = new ExpensesModel();
             BudgetModel bModel = new BudgetModel();
-            int userId = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
-            var expense = model.GetAll(bModel.GetCurrentBudgetId(userId));
+            SessionManager session = new SessionManager();
+            int budgetId = session.Get<Budget>(PageConstant.BUDGET_ID_IN_SESSION).Id;
+            int userId = session.Get<User>(PageConstant.USER_ID_I_SESSION).Id;
+            var expense = model.GetAll(budgetId);
 
             var viewModel = new SummaryModel()
             {

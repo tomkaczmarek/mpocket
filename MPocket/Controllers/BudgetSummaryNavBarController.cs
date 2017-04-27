@@ -1,4 +1,6 @@
-﻿using MPocket.Models;
+﻿using EntityDatabase.Models;
+using MPocket.Models;
+using MPocket.Utils;
 using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,8 @@ namespace MPocket.Controllers
         public ActionResult BudgetSummary()
         {
             BudgetModel model = new BudgetModel();
-            model.CurrentBudget = model.GetCurrentBudget(CurrentContext.Instance.Get(Session.SessionID).CurrentUserId).CurrentBudget;
+            SessionManager session = new SessionManager();
+            model.CurrentBudget = model.GetCurrentBudget(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id).CurrentBudget;
             return View(model);
         }
     }

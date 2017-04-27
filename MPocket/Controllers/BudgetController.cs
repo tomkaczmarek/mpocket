@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MPocket.Models;
 using EntityDatabase.Models;
 using MPocketCommon.Helpers;
+using MPocket.Utils;
 
 namespace MPocket.Controllers
 {
@@ -15,7 +16,8 @@ namespace MPocket.Controllers
         public ActionResult Index()
         {
             BudgetModel model = new BudgetModel();
-            Budget budget = model.GetCurrentBudget(CurrentContext.Instance.Get(Session.SessionID).CurrentUserId);
+            SessionManager session = new SessionManager();
+            Budget budget = model.GetCurrentBudget(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id);
             model.CurrentBudget = budget.CurrentBudget;
             model.EndDate = budget.EndDate;
             model.StartDate = budget.StartDate;
@@ -25,7 +27,8 @@ namespace MPocket.Controllers
 
         public ActionResult Update(BudgetModel model)
         {
-            Budget budget = model.GetCurrentBudget(CurrentContext.Instance.Get(Session.SessionID).CurrentUserId);
+            SessionManager session = new SessionManager();
+            Budget budget = model.GetCurrentBudget(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id);
             model.StartBudget = budget.StartBudget + model.AddedBudget;
             model.CurrentBudget = budget.CurrentBudget + model.AddedBudget;
             budget.StartBudget = model.StartBudget;

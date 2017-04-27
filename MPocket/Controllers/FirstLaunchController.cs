@@ -1,5 +1,6 @@
 ﻿using EntityDatabase.Models;
 using MPocket.Models;
+using MPocket.Utils;
 using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,9 @@ namespace MPocket.Controllers
         {
             BudgetModel budgetModel = new BudgetModel();
             SettingsModel settingModel = new SettingsModel();
-            int userid = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
-
+            SessionManager sessionManager = new SessionManager();
+            int userid = sessionManager.Get<EntityDatabase.Models.User>(PageConstant.USER_ID_I_SESSION).Id;
+            
             budgetModel = model.Budget;
             settingModel = model.Settings;                   
             budgetModel.UserId = settingModel.UserId = userid;
@@ -30,6 +32,7 @@ namespace MPocket.Controllers
             settingModel.AddSettings(settingModel);
 
             Budget budget = budgetModel.GetCurrentBudget(userid);
+            sessionManager.Add<Budget>(budget, PageConstant.BUDGET_ID_IN_SESSION);
             budgetModel.CurrentBudget = budget.CurrentBudget;
             budgetModel.StartBudget = budget.StartBudget;
 

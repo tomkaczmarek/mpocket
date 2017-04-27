@@ -11,7 +11,7 @@
             <p class="navbar-text navbar-right">
                 @Html.Partial("BudgetSummary", Model)
                 
-                <a>@CurrentContext.Instance.Get(Session.SessionID).CurrentUserName</a>
+                <a>@ViewBag.Name</a>
                 @*<a>Avatar</a>*@
                 @Html.ActionLink("Wyloguj", "UserLoginView", "UserLogin")
             </p>

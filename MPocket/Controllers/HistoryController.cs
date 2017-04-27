@@ -1,5 +1,6 @@
 ﻿using EntityDatabase.Models;
 using MPocket.Models;
+using MPocket.Utils;
 using MPocket.ViewsModel;
 using MPocketCommon.Helpers;
 using System;
@@ -16,10 +17,11 @@ namespace MPocket.Controllers
         public ActionResult Index()
         {
             BudgetModel model = new BudgetModel();
+            SessionManager session = new SessionManager();
 
             BudgetViewModel views = new BudgetViewModel()
             {
-                Budgets = model.GetAll(CurrentContext.Instance.Get(Session.SessionID).CurrentUserId)
+                Budgets = model.GetAll(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id)
             };
 
             return View(views);

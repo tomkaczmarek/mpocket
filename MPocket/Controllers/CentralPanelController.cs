@@ -1,5 +1,6 @@
 ﻿using EntityDatabase.Models;
 using MPocket.Models;
+using MPocket.Utils;
 using MPocketCommon.Helpers;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,9 @@ namespace MPocket.Controllers
         public ActionResult Save(ExpensesModel model)
         {
             BudgetModel bmodel = new BudgetModel();
-            int userId = CurrentContext.Instance.Get(Session.SessionID).CurrentUserId;
-            model.BudgetId = bmodel.GetCurrentBudgetId(userId);
+            SessionManager session = new SessionManager();
+            int userId = session.Get<User>(PageConstant.USER_ID_I_SESSION).Id;
+            model.BudgetId = session.Get<Budget>(PageConstant.BUDGET_ID_IN_SESSION).Id;
             model.Save(model);
 
             Budget budget = bmodel.GetCurrentBudget(userId);

@@ -47,10 +47,8 @@
     <Compile Include="Cryptography\ICryptography.cs" />
     <Compile Include="Cryptography\PasswordGenerator.cs" />
     <Compile Include="Cryptography\PasswordManager.cs" />
-    <Compile Include="Helpers\CurrentContext.cs" />
     <Compile Include="Helpers\Mailer.cs" />
     <Compile Include="Helpers\PageConstant.cs" />
-    <Compile Include="Helpers\SessionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
