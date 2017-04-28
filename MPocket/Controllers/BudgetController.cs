@@ -17,7 +17,7 @@ namespace MPocket.Controllers
         {
             BudgetModel model = new BudgetModel();
             SessionManager session = new SessionManager();
-            Budget budget = model.GetCurrentBudget(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id);
+            Budget budget = model.GetBudgetById(session.Get<Budget>(PageConstant.BUDGET_ID_IN_SESSION).Id);
             model.CurrentBudget = budget.CurrentBudget;
             model.EndDate = budget.EndDate;
             model.StartDate = budget.StartDate;
@@ -28,7 +28,7 @@ namespace MPocket.Controllers
         public ActionResult Update(BudgetModel model)
         {
             SessionManager session = new SessionManager();
-            Budget budget = model.GetCurrentBudget(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id);
+            Budget budget = model.GetBudgetById(session.Get<Budget>(PageConstant.BUDGET_ID_IN_SESSION).Id);
             model.StartBudget = budget.StartBudget + model.AddedBudget;
             model.CurrentBudget = budget.CurrentBudget + model.AddedBudget;
             budget.StartBudget = model.StartBudget;

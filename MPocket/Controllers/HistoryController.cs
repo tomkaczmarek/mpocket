@@ -21,10 +21,22 @@ namespace MPocket.Controllers
 
             BudgetViewModel views = new BudgetViewModel()
             {
-                Budgets = model.GetAll(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id)
+                Budget = model.GetAll(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id)
             };
 
             return View(views);
+        }
+
+        public ActionResult Load(string[] selected)
+        {
+            SessionManager session = new SessionManager();
+            BudgetModel bmodel = new BudgetModel();
+            Budget budget = bmodel.GetBudgetById(int.Parse(selected.First()));
+
+            session.Replace<Budget>(budget, PageConstant.BUDGET_ID_IN_SESSION);
+            bmodel.StartBudget = budget.StartBudget;
+            bmodel.CurrentBudget = budget.CurrentBudget;
+            return View("MainPanel", bmodel);
         }
     }
 }

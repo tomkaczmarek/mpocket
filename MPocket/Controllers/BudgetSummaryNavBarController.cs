@@ -17,7 +17,7 @@ namespace MPocket.Controllers
         {
             BudgetModel model = new BudgetModel();
             SessionManager session = new SessionManager();
-            model.CurrentBudget = model.GetCurrentBudget(session.Get<User>(PageConstant.USER_ID_I_SESSION).Id).CurrentBudget;
+            model.CurrentBudget = model.GetBudgetById(session.Get<Budget>(PageConstant.BUDGET_ID_IN_SESSION).Id).CurrentBudget;
             return View(model);
         }
     }

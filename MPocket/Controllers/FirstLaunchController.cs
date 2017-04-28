@@ -23,7 +23,7 @@ namespace MPocket.Controllers
             BudgetModel budgetModel = new BudgetModel();
             SettingsModel settingModel = new SettingsModel();
             SessionManager sessionManager = new SessionManager();
-            int userid = sessionManager.Get<EntityDatabase.Models.User>(PageConstant.USER_ID_I_SESSION).Id;
+            int userid = sessionManager.Get<User>(PageConstant.USER_ID_I_SESSION).Id;
             
             budgetModel = model.Budget;
             settingModel = model.Settings;                   

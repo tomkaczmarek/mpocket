@@ -3,23 +3,26 @@
     ViewBag.Title = "Index";
 }
 <br />
-@{ 
-
+@*@{ 
 <ul>
-    @foreach (var b in Model.Budgets)
+    @foreach (var b in Model.Budget)
     {
-        <li class="list-group-item">@b.StartBudget <input type="checkbox"/></li>
+        <li class="list-group-item">@b.StartBudget <input type="checkbox" name="selected" value="@b.Id" id="@b.Id"/></li>
     }
 
 </ul>
-
-
-
-
- }
+ }*@
 
 @using (Html.BeginForm("Load", "History"))
 {
+   
+
+
+    foreach (var b in Model.Budget)
+    {
+        <li class="list-group-item">@b.StartBudget <input type="checkbox" name="selected" value="@b.Id" id="@b.Id" /></li>
+    }
+    <br />
     <button type="submit" class="btn btn-default">Wczytaj</button>
 }
 

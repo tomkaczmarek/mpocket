@@ -78,5 +78,18 @@ namespace MPocket.Models
             }
             return budget;
         }
+
+        public Budget GetBudgetById(int budgetId)
+        {
+            Budget budget;
+
+            using (var c = new EntityContext())
+            {
+                BudgetOperation operation = new BudgetOperation();
+                budget = operation.Get(budgetId, c);
+            }
+
+            return budget;
+        }
     }
 }
