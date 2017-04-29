@@ -3,26 +3,50 @@
     ViewBag.Title = "Index";
 }
 <br />
-@*@{ 
-<ul>
-    @foreach (var b in Model.Budget)
-    {
-        <li class="list-group-item">@b.StartBudget <input type="checkbox" name="selected" value="@b.Id" id="@b.Id"/></li>
-    }
+@*@{
+    <ul>
+        @foreach (var b in Model.Budget)
+        {
+            <li class="list-group-item">@b.StartBudget <input type="checkbox" name="selected" value="@b.Id" id="@b.Id"/></li>
+        }
 
-</ul>
- }*@
+    </ul>
+     }*@
 
 @using (Html.BeginForm("Load", "History"))
 {
-   
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Budżet początkowy</th>
+                <th>Data początku</th>
+                <th>Data końca</th>
+                <th>Załaduj</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model.Budget)
+            {
 
-
-    foreach (var b in Model.Budget)
-    {
-        <li class="list-group-item">@b.StartBudget <input type="checkbox" name="selected" value="@b.Id" id="@b.Id" /></li>
-    }
-    <br />
+                string left = string.Empty;
+                string right = string.Empty;
+                if (b.StartDate <= DateTime.Now && b.EndDate >= DateTime.Now)
+                {
+                    left = "<strong>";
+                    right = "</strong>";
+                }
+                <tr>
+                    
+                    <td>@Html.Raw(left)@b.StartBudget@Html.Raw(right)</td>
+                    <td>@Html.Raw(left)@b.StartDate.ToShortDateString()@Html.Raw(right)</td>
+                    <td>@Html.Raw(left)@b.EndDate.ToShortDateString()@Html.Raw(right)</td>
+                    <td><input type="checkbox" name="selected" value="@b.Id" id="@b.Id" /></td>
+                    
+                </tr>
+               
+            }
+        </tbody>
+    </table>
     <button type="submit" class="btn btn-default">Wczytaj</button>
 }
 
