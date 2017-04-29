@@ -1,4 +1,6 @@
 ﻿@using MPocketCommon.Helpers
+@using MPocket.Utils
+@using EntityDatabase.Models
 @model MPocket.Models.BudgetModel
 
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -11,10 +13,14 @@
             <p class="navbar-text navbar-right">
                 @Html.Partial("BudgetSummary", Model)
                 
-                <a>@ViewBag.Name</a>
+                @{
+                    SessionManager session = new SessionManager();
+                    string name = session.Get<User>(PageConstant.USER_ID_I_SESSION).Name;
+                }
+                <a>@name</a>
                 @*<a>Avatar</a>*@
-                @Html.ActionLink("Wyloguj", "UserLoginView", "UserLogin")
-            </p>
+                @Html.ActionLink("Wyloguj", "Index", "LogOut")
+            </a>
         </div>
     </div>
 </div>

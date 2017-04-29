@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MPocket.Controllers
 {
-    public class CentralPanelController : Controller
+    public class CentralPanelController : BaseController
     {
         // GET: CentralPanel
         public ActionResult CentralView()

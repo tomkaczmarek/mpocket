@@ -1,17 +1,7 @@
-﻿@model MPocket.ViewsModel.BudgetViewModel
-@{
-    ViewBag.Title = "Index";
-}
-<br />
-@*@{
-    <ul>
-        @foreach (var b in Model.Budget)
-        {
-            <li class="list-group-item">@b.StartBudget <input type="checkbox" name="selected" value="@b.Id" id="@b.Id"/></li>
-        }
-
-    </ul>
-     }*@
+﻿@using MPocket.Utils
+@using EntityDatabase.Models
+@using MPocketCommon.Helpers
+@model MPocket.ViewsModel.BudgetViewModel
 
 @using (Html.BeginForm("Load", "History"))
 {
@@ -27,15 +17,18 @@
         <tbody>
             @foreach (var b in Model.Budget)
             {
+                SessionManager session = new SessionManager();
 
                 string left = string.Empty;
                 string right = string.Empty;
-                if (b.StartDate <= DateTime.Now && b.EndDate >= DateTime.Now)
+                string style = string.Empty;
+                if (b.Id == session.Get<Budget>(PageConstant.BUDGET_ID_IN_SESSION).Id)
                 {
                     left = "<strong>";
                     right = "</strong>";
+                    style = "border:2px solid green";
                 }
-                <tr>
+                <tr style="@Html.Raw(style)">
                     
                     <td>@Html.Raw(left)@b.StartBudget@Html.Raw(right)</td>
                     <td>@Html.Raw(left)@b.StartDate.ToShortDateString()@Html.Raw(right)</td>

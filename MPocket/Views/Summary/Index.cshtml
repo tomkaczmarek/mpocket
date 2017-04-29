@@ -5,17 +5,31 @@
 <br />
 
 
-@{ 
+@{
     decimal i = 0;
-    decimal j = 0;
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kwota</th>
+                <th>Kategoria</th>
+                <th>Opis wydatku</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 
-    <ul>
-        @foreach (var exp in Model.Summary)
-        {
-            <li class="list-group-item">@exp.Amount<span class="badge">@exp.Description</span></li>
-            i += exp.Amount;          
-        }
-    </ul>
+            @foreach (var exp in Model.Summary)
+            {
+                <tr>
+                    <td>@exp.Amount</td>
+                    <td>test</td>
+                    <td>@exp.Description</td>
+                    <td></td>
+                </tr>
+                i += exp.Amount;
+            }
+        </tbody>
+    </table>
     <br />
     <p>Suma wydatków: <strong style="font-size:medium; font-family:'Century Gothic'">@string.Format("{0:#.00}", i) zł</strong></p>
 }

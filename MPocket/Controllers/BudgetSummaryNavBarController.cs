@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MPocket.Controllers
 {
-    public class BudgetSummaryNavBarController : Controller
+    public class BudgetSummaryNavBarController : BaseController
     {
         // GET: BudgetSummaryNavBar
         public ActionResult BudgetSummary()

@@ -7,28 +7,33 @@ using System.Web.SessionState;
 
 namespace MPocket.Utils
 {
-    internal class SessionManager
+    public class SessionManager
     {
         private readonly HttpSessionState _session;
 
-        internal SessionManager()
+        public SessionManager()
         {
             _session = HttpContext.Current.Session;              
         }
 
-        internal void Add<T>(T value, string name)
+        public void Add<T>(T value, string name)
         {
             _session.Add(name, value);
         }
 
-        internal T Get<T>(string name)
+        public T Get<T>(string name)
         {
             return (T)_session[name];
         }
-        
-        internal void Replace<T>(T value, string name)
+
+        public void Replace<T>(T value, string name)
         {
             _session[name] = value;
+        }
+
+        public void RemoveSession()
+        {
+            _session.RemoveAll();
         }
     }
 }

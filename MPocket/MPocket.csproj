@@ -150,11 +150,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\BudgetSummaryNavBarController.cs" />
     <Compile Include="Controllers\CentralPanelController.cs" />
     <Compile Include="Controllers\FirstLaunchController.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
+    <Compile Include="Controllers\LogOutController.cs" />
     <Compile Include="Controllers\MainPanelController.cs" />
     <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
@@ -220,9 +222,11 @@
     <Content Include="Views\Shared\BudgetSummary.cshtml" />
     <Content Include="Views\FirstLaunch\FirstLaunch.cshtml" />
     <Content Include="Views\History\Index.cshtml" />
+    <Content Include="Views\LogOut\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

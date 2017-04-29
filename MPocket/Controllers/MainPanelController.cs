@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace MPocket.Controllers
 {
-    public class MainPanelController : Controller
+    public class MainPanelController : BaseController
     {
         // GET: MainPanel
         public ActionResult MainPanel()
